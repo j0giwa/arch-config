@@ -1,0 +1,107 @@
+# Configuration file for Starship Prompt
+#
+# https://starship.rs/
+# https://github.com/starship/starship
+
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 10
+command_timeout = 1000
+# Disable the new line at the start of the prompt
+add_newline = false
+
+# ##########
+# Kali theme
+# ##########
+# A simple Starship prompt in the style of the Kali Linux Zsh prompt.
+#
+# setting 'disabled = true' in the corresponding module block.
+format = """
+[[┌──](green)\\($username[](bold blue)$hostname\\)-\\[$directory\\]](green)$git_branch$git_commit$git_state$git_metrics$git_status$c$cmake$docker_context$dart$dotnet$golang$java$nodejs$php$python$ruby$rust$cmd_duration$jobs$battery
+[└─](green)$character"""
+
+[username]
+show_always = true
+style_user = "bold blue"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = false
+format =  "[$hostname](bold blue)"
+
+[directory]
+truncation_length = 1
+truncation_symbol = "…/"
+truncate_to_repo = false
+#style = "bold white"
+style = "bold "
+format = "[$path]($style)[$read_only]($read_only_style)"
+
+[character]
+success_symbol = "[\\$](bold blue)"
+error_symbol = "[\\$](bold red)"
+
+# Additional information
+# Can be hidden by setting 'disabled = true'
+[battery]
+disabled = false
+
+[[battery.display]]
+threshold = 15
+style = "bold red"
+
+[c]
+disabled = false
+format = '\[[$symbol($version(-$name))]($style)\]'
+
+[cmake]
+disabled = false
+format = '\[[$symbol($version)]($style)\]'
+
+[cmd_duration]
+disabled = true
+format = '\[[⏱ $duration]($style)\]'
+
+[git_branch]
+disabled =  false
+format = '\[[$symbol$branch]($style)\]'
+
+[dart]
+disabled = true
+format = '\[[$symbol($version)]($style)\]'
+
+[docker_context]
+disabled = false
+format = '\[[$symbol$context]($style)\]'
+
+[dotnet]
+disabled = false
+format = '\[[$symbol($version)(🎯 $tfm)]($style)\]'
+
+[golang]
+disabled = false
+format = '\[[$symbol($version)]($style)\]'
+
+[java]
+disabled = false
+format = '\[[$symbol($version)]($style)\]'
+
+[nodejs]
+disabled = false
+format = '\[[$symbol($version)]($style)\]'
+
+[php]
+disabled = false
+format = '\[[$symbol($version)]($style)\]'
+
+[python]
+disabled = false
+format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
+
+[ruby]
+disabled = false
+format = '\[[$symbol($version)]($style)\]'
+
+[rust]
+disabled = false
+format = '\[[$symbol($version)]($style)\]'
+

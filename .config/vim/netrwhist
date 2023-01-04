@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =0
+let g:netrw_dirhist_0='/home/jogiwa/.config/polybar'
+let g:netrw_dirhist_9='/home/jogiwa/.config'
+let g:netrw_dirhist_8='/home/jogiwa/.config/alacritty'
+let g:netrw_dirhist_7='/home/jogiwa/.vim/plugged/dracula'
+let g:netrw_dirhist_6='/home/jogiwa/.vim/plugged'
+let g:netrw_dirhist_5='/home/jogiwa/.vim'
+let g:netrw_dirhist_4='/home/jogiwa'
+let g:netrw_dirhist_3='/home/jogiwa/.config'
+let g:netrw_dirhist_2='/home/jogiwa/.config/alacritty'
+let g:netrw_dirhist_1='/home/jogiwa/.config'
