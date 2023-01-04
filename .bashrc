@@ -53,4 +53,4 @@ eval "$(starship init bash)"
 
 # Display random Pokemon
 pokemon-colorscripts --random
-alias config='/usr/bin/git --git-dir=/home/jogiwa/arch-config/ --work-tree=/home/jogiwa'
+alias config='/usr/bin/git --git-dir=$HOME/Documents/Projekte/arch-config/ --work-tree=$HOME'

@@ -5,12 +5,12 @@ super + Escape
 	pkill -USR1 -x sxhkd
 
 # terminal emulator
-#super + Return
-#	alacritty
+super + Return
+	alacritty
 
 # file manager
 super + e
-	dolphin
+	pcmanfm
 
 # Texteditor
 super + shift + e
