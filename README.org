@@ -1,0 +1,31 @@
+#+TITLE: My Arch linux dotfiles
+
+* Table of Contents :toc:
+- [[#what-are-dotfiles][What Are Dotfiles?]]
+- [[#in-this-repository][In this Repository]]
+  - [[#window-manager-configs][Window Manager Configs]]
+  - [[#editors][Editors]]
+  - [[#other-programms][Other Programms]]
+
+* What Are Dotfiles?
+Dotfiles are the customization files that are used to personalize your Linux or other Unix-based system.
+You can tell that a file is a dotfile because the name of the file will begin with a period--a dot!
+The period at the beginning of a filename or directory name indicates that it is a hidden file or directory.
+This repository contains my personal dotfiles.
+They are stored here for convenience so that I may quickly access them on new machines or new installs.
+
+* In this Repository
+** Window Manager Configs
++  BSPWM
+
+** Editors
++ Doom Emcas
++ Vim
+
+** Other Programms
++ alacritty
++ kitty
++ lf
++ starship
++ sxhkd
++ zathura
