@@ -20,10 +20,10 @@ They are stored here for convenience so that I may quickly access them on new ma
 
 * In this Repository
 ** Window Manager Configs
-+  BSPWM
++  bspwm
 
 ** Editors
-+ Doom Emcas
++ Doom Emacs
 + Vim
 
 ** Other Programms
