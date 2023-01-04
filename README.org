@@ -8,6 +8,12 @@
   - [[#other-programms][Other Programms]]
 
 * What Are Dotfiles?
+
+#+CAPTION: My Desktop
+#+ATTR_HTML: :alt My Desktop t :title My Desktop :align center
+[[https://preview.redd.it/udtmk6ho1x9a1.png?width=960&crop=smart&auto=webp&s=d9789568b7c3e6ae986089aea2576bcb8d9d75cf]]
+
+
 Dotfiles are the customization files that are used to personalize your Linux or other Unix-based system.
 This repository contains my personal dotfiles, and some scripts.
 They are stored here for convenience so that I may quickly access them on new machines or new installs.
