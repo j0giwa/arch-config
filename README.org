@@ -30,6 +30,7 @@ They are stored here for convenience so that I may quickly access them on new ma
 + alacritty
 + kitty
 + lf
++ rofi
 + starship
 + sxhkd
 + zathura

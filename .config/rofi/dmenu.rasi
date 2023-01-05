@@ -1,0 +1,41 @@
+* {
+  background-color: #282A36;
+  border-color: #282A36;
+  text-color: #F8F8F2;
+  font: "Times New Roman 9";
+}
+window {
+  anchor: north;
+  location: north;
+  height: 15px;
+  width: 100%;
+  foreground: #F8F8F2;
+  padding: 0px 3px;
+  children: [ horibox ];
+}
+horibox {
+  orientation: horizontal;
+  children: [ entry, listview ];
+}
+listview {
+  layout: horizontal;
+  spacing: 2px;
+  height: 18px;
+  lines: 11;
+}
+entry {
+  expand: false;
+  width: 16em;
+}
+element {
+  padding: 0px 2px;
+  height: 12px;
+  margin: 0px;
+}
+element selected {
+  background-color: #BD93F9;
+}
+element-text, element-icon {
+  background-color: inherit;
+  text-color: inherit;
+}
