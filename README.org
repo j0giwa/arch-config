@@ -33,3 +33,7 @@ They are stored here for convenience so that I may quickly access them on new ma
 + starship
 + sxhkd
 + zathura
+
+* Related Repositorys
++ [[https://github.com/j0giwa/dwm][dwm]]
++ [[https://github.com/j0giwa/dwmblocks][dwmblocks]]
