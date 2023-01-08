@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Menu
-menu=$(dialog --menu "Select Option" 0 0 4 1 "Internal Display (Default)" 2 "Single external Display" 3 "Mirror Screens (720p)" 4 "Dual Monitor" 2>&1 >/dev/tty)
+menu=$(whiptail --menu "Select Option" 0 0 4 1 "Internal Display (Default)" 2 "Single external Display" 3 "Mirror Screens (720p)" 4 "Dual Monitor" 2>&1 >/dev/tty)
 
 for choice in $menu
 do
