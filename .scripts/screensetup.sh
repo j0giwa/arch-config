@@ -44,8 +44,8 @@ do
     esac
 done
 
-# Fix Wallpaper if nitrogen is running
-pgrep -x nitrogen > /dev/null || nitrogen --restore &
+# Fix Wallpaper
+$HOme/.scripts/setwallpaper.sh
 
 # clear screen (terminal) after selection
 clear

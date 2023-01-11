@@ -11,4 +11,4 @@ type wal >/dev/null 2>&1 && { wal -c
     killall dwmblocks
     setsid dwmblocks >/dev/null & } >/dev/null 2>&1
 xwallpaper --zoom $HOME/.config/wallpaper/wal.png
-
+pidof dwm >/dev/null && xdotool key alt+F5

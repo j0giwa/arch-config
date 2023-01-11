@@ -9,18 +9,12 @@ mod1 + Escape
 #	st
 
 # file manager
-mod1 + shift + e
-	pcmanfm
+mod1 + e
+    st -e lf
 
-# Texteditor
-mod1 + e 
-    emacsclient -c -a 'emacs' 
-
-mod1 + e; {b,d,s,w}
-    emacsclient -c -a 'emacs' --eval {'(ibuffer)','(dired nil)','(eshell)','(doom/window-maximize-buffer(eww \"www.duckduckgo.org\"))'}
 
 # Browser
-super + w
+mod1 + w
 	firefox
 
 # run-launcher
