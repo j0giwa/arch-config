@@ -1,28 +1,31 @@
 # WM INDEPENDENT KEYBINDINGS
 
 # make sxhkd reload its configuration files:
-super + Escape
+mod1 + Escape
 	pkill -USR1 -x sxhkd
 
 # terminal emulator
-super + Return
-	alacritty
+#super + Return
+#	st
 
 # file manager
-super + e
+mod1 + shift + e
 	pcmanfm
 
 # Texteditor
-super + shift + e
-	emacs
+mod1 + e 
+    emacsclient -c -a 'emacs' 
+
+mod1 + e; {b,d,s,w}
+    emacsclient -c -a 'emacs' --eval {'(ibuffer)','(dired nil)','(eshell)','(doom/window-maximize-buffer(eww \"www.duckduckgo.org\"))'}
 
 # Browser
 super + w
 	firefox
 
 # run-launcher
-super + r
-   dmenu_run
+#super + r
+#   dmenu_run
 
 # ===  BSPWM HOTKEYS ===
 
