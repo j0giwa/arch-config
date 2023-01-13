@@ -3,9 +3,13 @@
 # Set dpi
 xrandr --dpi 92
 
+#
 # Set Wallpaper
-#$HOME/.scripts/wallpaper.sh & #restore previous wallpaper
-$HOME/.scripts/wallpaper.sh $HOME/Pictures/wallpapers & # pick random wallpaper
+#
+# restore previous wallpaper
+$HOME/.scripts/wallpaper.sh &
+# pick random wallpaper
+#$HOME/.scripts/wallpaper.sh $HOME/Pictures/wallpapers & # pick random wallpaper
 
 # Load Xresources
 xrdb ${XDG_CONFIG_HOME:-$HOME.config}/X11/Xresources & xrdbpid=$!
