@@ -2,8 +2,10 @@
 
 # ==== Default Programms ====
 export EDITOR="vim"
-export TERMINAL="alacritty"
+export TERMINAL="st"
 export BROWSER="firefox"
+
+export PYWALL=false #shoud pywall be used?
 
 export PATH="~/.emacs.d/bin:~/.scripts:$PATH"
 

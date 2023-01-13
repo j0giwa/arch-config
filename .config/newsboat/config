@@ -20,3 +20,6 @@ bind-key D pb-download
 bind-key U show-urls
 bind-key x pb-delete
 
+
+highlight feedlist "---.*---" blue default bold
+highlight feedlist ".*0/0.." default default invis
