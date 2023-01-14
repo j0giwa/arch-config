@@ -6,7 +6,6 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 pokemon-colorscripts --random
 eval "$(starship init zsh)"
 
-
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
