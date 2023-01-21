@@ -45,7 +45,7 @@ do
 done
 
 # Fix Wallpaper
-$HOme/.scripts/setwallpaper.sh
+wallpaper
 
 # clear screen (terminal) after selection
 clear

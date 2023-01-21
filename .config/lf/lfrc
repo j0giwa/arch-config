@@ -18,9 +18,9 @@ cmd open ${{
     test -L $f && f=$(readlink -f $f)
     case $(file --mime-type $f -b) in
         text/*) $EDITOR $fx;;
-        video/* | audio/*) mpv "$f";;
-        application/pdf | application/epub+zip | image/vnd.djvu) zathura "$f";;
-        image/*) sxiv "$f";;
+        video/* | audio/*) devour mpv "$f";;
+        application/pdf | application/epub+zip | image/vnd.djvu) devour zathura "$f";;
+        image/*) devour sxiv "$f";;
         *) xdg-open "$f";;
     esac
 }}

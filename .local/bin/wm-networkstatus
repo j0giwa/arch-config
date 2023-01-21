@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Print disconnected
+[ $(nmcli d | awk 'NR == 2 {print $4}') = "--" ] && echo -e "N: N/A"
+
+# Print IP for Wifi connections
+[ $(nmcli d | awk 'NR == 2 {print $1}') = "wlan0" ] && [ $(nmcli d | awk 'NR == 2 {print $4}') != "--" ] && echo "W: $(ip -p -f inet address | grep inet | awk 'NR == 2 {print $2}')" 
+
+# Print IP for Ethernet connections
+[ $(nmcli d | awk 'NR == 2 {print $1}') = "enp4s0f1" ] && [ $(nmcli d | awk 'NR == 2 {print $4}') != "--" ] && echo "E: $(ip -p -f inet address | grep inet | awk 'NR == 2 {print $2}')" 

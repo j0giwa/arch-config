@@ -90,9 +90,11 @@ alias grep="grep --color=auto"
 alias null='/dev/null'
 alias htdocs='cd /opt/lampp/htdocs'
 alias python='python3'
+alias yta='youtube-dl -x --audio-format mp3 --audio-quality 0'
+
 
 # == Custom Commands
-alias config='/usr/bin/git --git-dir=$HOME/Documents/Projekte/arch-config --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/Documents/projekte/arch-config/ --work-tree=$HOME'
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

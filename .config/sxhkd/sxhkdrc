@@ -12,10 +12,12 @@ mod1 + Escape
 mod1 + e
     st -e lf
 
+mod1 + shift + e
+    emacs
 
 # Browser
 mod1 + w
-	firefox
+    firefox
 
 # run-launcher
 #super + r

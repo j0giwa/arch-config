@@ -1,0 +1,4 @@
+#!/bin/sh
+
+SONG="$(mpc current)"
+[ -z "$SONG" ] && echo "Mus: --" || echo "Mus: $SONG" 
