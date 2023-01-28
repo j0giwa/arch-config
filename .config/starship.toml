@@ -16,7 +16,7 @@ add_newline = false
 #
 # setting 'disabled = true' in the corresponding module block.
 format = """
-[[┌──](green)\\($username[](bold blue)$hostname\\)-\\[$directory\\]](green)$git_branch$git_commit$git_state$git_metrics$git_status$c$cmake$docker_context$dart$dotnet$golang$java$nodejs$php$python$ruby$rust$cmd_duration$jobs$battery
+[[┌──](green)\\($username[@](bold blue)$hostname\\)-\\[$directory\\]](green)$git_branch$git_commit$git_state$git_metrics$git_status$c$cmake$docker_context$dart$dotnet$golang$java$nodejs$php$python$ruby$rust$cmd_duration$jobs$battery
 [└─](green)$character"""
 
 [username]

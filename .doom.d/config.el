@@ -126,7 +126,7 @@
          (org-level-7 1.1 "#50fa7b" normal)
          (org-level-8 1.0 "#ff6c6b" normal)))
     (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bd93f9"))
+    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
 
 (use-package org-auto-tangle
   :defer t

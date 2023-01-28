@@ -7,7 +7,7 @@ xrandr --dpi 92
 # Set Wallpaper
 #
 # restore previous wallpaper
-wallpaper &
+#wallpaper &
 # pick random wallpaper
 #wallpaper $HOME/Pictures/wallpapers &
 
@@ -16,12 +16,12 @@ xrdb ${XDG_CONFIG_HOME:-$HOME.config}/X11/Xresources & xrdbpid=$!
 
 # Autostart some Programs
 pidof -s emacs || /usr/bin/emacs --daemon &
-pidof -s dunst || dunst &
-pidof -s dwmblocks || dwmblocks &
-pidof -s picom || picom &
+#pidof -s dunst || dunst &
+#pidof -s dwmblocks || dwmblocks &
+#pidof -s picom || picom &
 pidof -s unclutter || unclutter &
 pidof -s udiskie || udiskie  &
-pidof -s sxhkd || sxhkd &
+#pidof -s sxhkd || sxhkd &
 
 #Wait fo xrdb if neccesary
 [ -n "$xrdbpid" ] && wait "$xrdbpid"

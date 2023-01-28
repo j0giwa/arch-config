@@ -9,6 +9,7 @@ export PAGER="most"
 
 path+=$HOME/.emacs.d/bin
 path+=$HOME/.local/bin
+path+=$HOME/.spicetify
 export PATH
 
 # ==== XDG ====
