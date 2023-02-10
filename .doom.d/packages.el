@@ -13,7 +13,6 @@
 (package! all-the-icons-dired)
 (package! dired-open)
 (package! peep-dired)
-(package! writeroom-mode)
 (package! org-auto-tangle)
 (package! beacon)
 

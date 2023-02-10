@@ -7,6 +7,7 @@ set shell sh            # interpreter for shell commands
 set shellopts '-eu'     # set '-eu' options for safer shell commands.
 set ifs "\n"            # set internal field separator (IFS) to "\n" for shell commands
 set scrolloff 10
+set hidden
 
 # execute current file (must be executable)
 map x $$f

@@ -17,6 +17,9 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)		# Include hidden files.
 
+# relocate zcoredump
+compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
+
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
@@ -90,8 +93,8 @@ alias grep="grep --color=auto"
 alias null='/dev/null'
 alias htdocs='cd /opt/lampp/htdocs'
 alias python='python3'
+alias youtube-dl='yt-dlp'
 alias yta='youtube-dl -x --audio-format mp3 --audio-quality 0'
-
 
 # == Custom Commands
 alias config='/usr/bin/git --git-dir=$HOME/Documents/projekte/arch-config/ --work-tree=$HOME'
