@@ -1,7 +1,11 @@
 {
     "layer": "top", // Waybar at top layer
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-bottom": 0,
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 20, // Waybar height (to be removed for auto height)
+    "height": 24, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 0, // Gaps between modules (Default: 4px)
     
@@ -13,23 +17,28 @@
         "custom/media"
     ],
     "modules-right": [
-        "keyboard-state",
         "mpd",
         "pulseaudio",
+        "cpu",
+        "temperature",
+        "memory",
+        "disk",
         "network",
         "battery",
-        "battery#bat2",
         "clock",
-        "tray",
         "custom/cycle_wall",
-        "custom/custom"
+        "custom/custom",
+        "tray"
     ],
     
     // Modules configuration
+
     "wlr/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{name}: {icon}",
+        "disable-scroll": false,
+        "all-outputs": false,
+        //"format": "{name}: {icon}",
+        //"format": "{icon}",
+        "format": "{name}",
         "format-icons": {
             "1": "",
             "2": "",
@@ -39,7 +48,10 @@
             "urgent": "",
             "focused": "",
             "default": ""
-        }
+        },
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "on-click": "activate"
     },
     "keyboard-state": {
         "numlock": true,
@@ -107,6 +119,10 @@
         "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", ""]
     },
+    "disk": {
+        "interval": 30,
+        "format": "{free} free ",
+    },
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
@@ -126,13 +142,10 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
+        "interval": 10,
+        "format": "{bandwidthUpBytes}  {bandwidthDownBytes} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
@@ -170,17 +183,17 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/cycle_wall": {
-        "format": "{}",
-        "exec": "~/.local/bin/expand wall",
+        "format": "",
+        "exec": "~/.local/bin/waybar/expand wall",
         "return-type": "json",
         // "interval": 1,
-        "on-click": "~/.local/bin/expand cycle",
-        "on-click-right": "~/.local/bin/expand cycler"
+        "on-click": "~/.local/bin/waybar/expand cycle",
+        "on-click-right": "~/.local/bin/waybar/expand cycler"
     },
     "custom/custom": {
         "format": "{}",
-        "exec": "~/.local/bin/expand arrow-icon",
-        "on-click": "~/.local/bin/expand_toolbar",
+        "exec": "~/.local/bin/waybar/expand arrow-icon",
+        "on-click": "~/.local/bin/waybar/expand_toolbar",
         "return-type": "json"
     }
 }

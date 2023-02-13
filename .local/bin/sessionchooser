@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Menu with different Windowmanagers
+menu=$(whiptail --menu "Select Enviroment" 0 0 3 1 "DWM (Xorg)" 2 "BSPWM (Xorg)" 3 "Hyprland (Wayland)" 2>&1 >/dev/tty)
+
+for choice in $menu
+do
+    case $choice in
+        1) clear && startx dwm ;;
+        2) clear && startx bspwm ;;
+        3) clear && Hyprland ;;
+    esac
+done
+

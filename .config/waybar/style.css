@@ -1,89 +1,88 @@
+@define-color dracula-background #282a36;
+@define-color dracula-light-background #44475a;
+@define-color dracula-foreground #f8f8f2;
+@define-color dracula-comment #6272a4;
+@define-color dracula-cyan #8be9fd;
+@define-color dracula-green #50fa7b;
+@define-color dracula-orange #ffb86c;
+@define-color dracula-pink #ff79c6;
+@define-color dracula-purple #bd93f9;
+@define-color dracula-red #ff5555;
+@define-color dracula-yellow #f1fa8c;
 
-    @define-color dracula-background       #171925;
-    @define-color dracula-light-background #44475a;
-    @define-color dracula-foreground #f8f8f2;
-    @define-color dracula-comment #6272a4;
-    @define-color dracula-cyan #8be9fd;
-    @define-color dracula-green #50fa7b;
-    @define-color dracula-orange #ffb86c;
-    @define-color dracula-pink #ff79c6;
-    @define-color dracula-purple #bd93f9;
-    @define-color dracula-red #ff5555;
-    @define-color dracula-yellow #f1fa8c;
+/* =============================== */
+/* Universal Styling */
+/* =============================== */
 
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+  /* `otf-font-awesome` is required to be installed for icons */
+  font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  border: none;
+  border-radius: 0;
 }
 
-window#waybar {
-    background-color: rgba(40, 42, 54, 0.95);
-    /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
-    color: #f8f8f2;
-    transition-property: background-color;
-    transition-duration: .5s;
+/* =============================== */
+/* Bar Styling */
+/* =============================== */
+
+#waybar {
+  background-color: rgba(40, 42, 54, 0.95);
+  /*border-bottom: 3px solid rgba(100, 114, 125, 0.5);*/
+  /*border-radius: 6px;*/
+  color: @dracula-foreground;
+  transition-property: background-color;
+  transition-duration: .5s;
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
-}
-
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
+#waybar.hidden {
+  opacity: 0.2;
 }
 
 button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
+  background: inherit;
+  box-shadow: inset 0 -3px @dracula-pink;
+  box-shadow: inset 0 -3px @dracula-foreground;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: @dracula-comment;
+  padding: 0 5px;
+  background-color: transparent;
+  color: @dracula-purple;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.active {
+  color: @dracula-pink;
+  box-shadow: inset 0 -2px @dracula-pink;
 }
 
 #workspaces button.focused {
-    color: @dracula-pink;
-    box-shadow: inset 0 -3px #ffffff;
+  color: @dracula-foreground;
+  box-shadow: inset 0 -3px @dracula-foreground;
 }
 
 #workspaces button.urgent {
-    color: #eb4d4b;
+  color: @dracula-red;
 }
 
 #mode {
-    color: #64727D;
-    border-bottom: 3px solid #ffffff;
+  color: @dracula-comment;
+  border-bottom: 3px solid @dracula-foreground;
 }
+
+/* =============================== */
+/* Modules */
+/* =============================== */
 
 #clock,
 #battery,
@@ -99,216 +98,108 @@ button:hover {
 #tray,
 #mode,
 #idle_inhibitor,
-#scratchpad,
-#mpd {
-    padding: 0 10px;
-    color: #ffffff;
+#scratchpad
+#mpd,
+#custom-custom,
+#custom-cycle_wall {
+  padding: 0 5px;
+  color: @dracula-foreground;
 }
 
 #window,
 #workspaces {
-    margin: 0 4px;
+  margin: 0 4px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
-#clock {
-    color: @dracula-orange;
-}
-
-#battery, #battery.charging, #battery.plugged {
-    color: @dracula-green;
+  margin-right: 0;
 }
 
 @keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
-
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 30%;
-  }
-
-  100% {
-    background-position: 0% 50%;
+  to {
+    background-color: white;
+    color: black;
   }
 }
 
-@keyframes gradient_f {
-  0% {
-    background-position: 0% 200%;
-  }
+/* =============================== */
+/* Module colors */
+/* =============================== */
 
-  50% {
-    background-position: 200% 0%;
-  }
-
-  100% {
-    background-position: 400% 200%;
-  }
-}
-
-@keyframes gradient_f_nh {
-  0% {
-    background-position: 0% 200%;
-  }
-
-  100% {
-    background-position: 200% 200%;
-  }
-}
-
-#battery.critical:not(.charging) {
-    background-color: @dracula-red;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-label:focus {
-    background-color: #000000;
-}
-
-#cpu,
-#memory,
-#temperature {
-    color: @dracula-cyan;
-}
-
-#disk {
-    color: #964B00;
-}
-
-#backlight {
-    color: #90b1b1;
-}
-
-#network {
-    color: @dracula-cyan;
-}
-
-#mpd.disconnected,
-#temperature.critical,
-#network.disconnected {
-    color: @dracula-red;
+#mpd,
+#mpd.paused,
+#mpd.stopped,
+#mpd.disconnected {
+  color: @dracula-comment;
 }
 
 #wireplumber,
-#pulseaudio {
-    color: @dracula-yellow;
-}
-
+#pulseaudio,
 #wireplumber.muted,
 #pulseaudio.muted {
-    color: @dracula-orange;
+  color: @dracula-cyan;
 }
 
-#custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
-    min-width: 100px;
+#cpu {
+  color: @dracula-yellow;
 }
 
-#custom-media.custom-spotify {
-    color: #66cc99;
+#temperature,
+#temperature.critical,
+#network.disconnected {
+  color: @dracula-red;
 }
 
-#custom-media.custom-vlc {
-    color: #ffa000;
+#memory {
+  color: @dracula-pink;
+}
+
+#disk {
+  color: @dracula-green;
+}
+
+#network{
+  color: @dracula-purple;
+}
+
+#battery, #battery.charging, #battery.plugged {
+  color: @dracula-orange;
+}
+
+#battery.critical:not(.charging) {
+  background-color: @dracula-red;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#clock {
+  color: @dracula-cyan;
+}
+
+#custom-cycle_wall,
+#custom-custom {
+  color: @dracula-foreground;
 }
 
 #tray {
-    background-color: #2980b9;
+  background-color: @dracula-background;
 }
 
 #tray > .passive {
-    -gtk-icon-effect: dim;
+  -gtk-icon-effect: dim;
 }
 
 #tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+  -gtk-icon-effect: highlight;
+  background-color: @dracula-red;
 }
 
-#idle_inhibitor {
-    background-color: #2d3436;
-}
-
-#idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
-}
-
-#mpd {
-    color: @dracula-comment;
-}
-
-#mpd.stopped {
-    color: @dracula-comment;
-}
-
-#mpd.paused {
-    color: @dracula-comment;
-}
-
-#language {
-    background: #00b093;
-    color: #740864;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state {
-    background: #97e1ad;
-    color: #000000;
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state > label {
-    padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-#scratchpad.empty {
-	background-color: transparent;
-}
-
-#custom-custom {
-  color: @dracula-orange;
-  padding-right: 1.25rem;
-  margin-right: 0px;
-}
-
-#custom-cycle_wall {
-  background: linear-gradient(45deg, rgba(245, 194, 231, 1) 0%, rgba(203, 166, 247, 1) 0%, rgba(243, 139, 168, 1) 13%, rgba(235, 160, 172, 1) 26%, rgba(250, 179, 135, 1) 34%, rgba(249, 226, 175, 1) 49%, rgba(166, 227, 161, 1) 65%, rgba(148, 226, 213, 1) 77%, rgba(137, 220, 235, 1) 82%, rgba(116, 199, 236, 1) 88%, rgba(137, 180, 250, 1) 95%);
-  background-size: 500% 500%;
-  animation: gradient 7s linear infinite;
-}
