@@ -99,9 +99,7 @@ button:hover {
 #mode,
 #idle_inhibitor,
 #scratchpad
-#mpd,
-#custom-custom,
-#custom-cycle_wall {
+#mpd {
   padding: 0 5px;
   color: @dracula-foreground;
 }
@@ -183,11 +181,6 @@ button:hover {
 
 #clock {
   color: @dracula-cyan;
-}
-
-#custom-cycle_wall,
-#custom-custom {
-  color: @dracula-foreground;
 }
 
 #tray {
