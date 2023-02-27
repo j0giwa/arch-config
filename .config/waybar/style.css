@@ -62,8 +62,7 @@ button:hover {
 }
 
 #workspaces button.active {
-  color: @dracula-pink;
-  box-shadow: inset 0 -2px @dracula-pink;
+  box-shadow: inset 0 -3px @dracula-purple;
 }
 
 #workspaces button.focused {
@@ -95,6 +94,7 @@ button:hover {
 #pulseaudio,
 #wireplumber,
 #custom-media,
+#custom-seperrator,
 #tray,
 #mode,
 #idle_inhibitor,

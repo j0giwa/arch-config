@@ -18,14 +18,23 @@
     ],
     "modules-right": [
         "mpd",
+        "custom/seperrator",
         "pulseaudio",
+        "custom/seperrator",
         "cpu",
+        "custom/seperrator",
         "temperature",
+        "custom/seperrator",
         "memory",
+        "custom/seperrator",
         "disk",
+        "custom/seperrator",
         "network",
+        "custom/seperrator",
         "battery",
+        "custom/seperrator",
         "clock",
+        "custom/seperrator",
         "tray"
     ],
     
@@ -61,9 +70,9 @@
         }
     },
     "mpd": {
-        "format": " {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {title}",
-        "format-disconnected": " Disconnected",
-        "format-stopped": " Stopped",
+        "format": " {stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {title} ",
+        "format-disconnected": " Disconnected ",
+        "format-stopped": " Stopped ",
         "unknown-tag": "N/A",
         "interval": 2,
         "consume-icons": {
@@ -104,10 +113,12 @@
     },
     "cpu": {
         "format": "  {usage}%",
+        "interval": 2,
         "tooltip": false
     },
     "memory": {
-        "format": "  {}%"
+        "format": "  {}%",
+        "interval": 2
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -115,7 +126,8 @@
         "critical-threshold": 80,
         // "format-critical": "{icon}  {temperatureC}°C",
         "format": "{icon}  {temperatureC}°C",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", ""],
+        "interval": 2
     },
     "disk": {
         "interval": 30,
@@ -132,7 +144,7 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
+        "format": "{icon}  {capacity}%",
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{icon} {time}",
@@ -179,6 +191,9 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "custom/seperrator": {
+        "format": "|"
     }
 }
 

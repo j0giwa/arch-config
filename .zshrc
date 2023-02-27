@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
-# Useless eycandy
+# Useless eyecandy
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b " #fallback
-pokemon-colorscripts --random
+pokemon-colorscripts --random --no-title
 eval "$(starship init zsh)"
 
 # History in cache directory:
@@ -103,6 +103,11 @@ alias config='/usr/bin/git --git-dir=$HOME/Documents/projekte/arch-config/ --wor
 eval $(thefuck --alias)
 # You can use whatever you want as an alias, like for Mondays:
 eval $(thefuck --alias FUCK)
+
+# Autostart X at login
+[ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ] && 
+    clear &&
+    startx 2>/dev/null
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

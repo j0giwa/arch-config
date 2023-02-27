@@ -22,7 +22,7 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 # Cleanup
 export HISTFILE="${XDG_STATE_HOME}/zsh/history"
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
-export DOOMDIR="$XDG_CONFIG_HOME/doom"
+#export DOOMDIR="$XDG_CONFIG_HOME/doom"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export ICEAUTHORITY="$XDG_CACHE_HOME/ICEauthority"
 export VSCODE_PORTABLE="$XDG_DATA_HOME/vscode"

@@ -1,13 +1,15 @@
 #!/bin/sh
 
+wallpaper_location="$HOME/.config/wallpaper/wal.png"
+
 # Select a picture and set it as the wallpaper
-[ -f "$1" ] && cp "$1" $HOME/.config/wallpaper/wal.png && notify-send -i "$HOME/.config/wallpaper/wal.png" "Wallpaper ($HOME/.config/wallpaperwal.png) changed."
+[ -f "$1" ] && cp "$1" "$wallpaper_location" && notify-send -i "$HOME/.config/wallpaper/wal.png" "Wallpaper changed!"
 # If "$1" is a directory, select a random picture
-[ -d "$1" ] && cp "$(find "$1" -type f | shuf -n 1)" $HOME/.config/wallpaper/wal.png && notify-send -i "$HOME/.config/wallpaper/wal.png" "Random Wallpaper choseni."
+[ -d "$1" ] && cp "$(find "$1" -type f | shuf -n 1)" "$wallpaper_location" && notify-send -i "$HOME/.config/wallpaper/wal.png" "Random Wallpaper chosen!"
 
 # If pywall ist installed (and enabled) update colors
 type wal >/dev/null 2>&1 && { wal -c
-    wal -s -i $HOME/.config/wallpaper/wal.png -o $HOME/.config/wallpaper/postrun
+    wal -s -i "$wallpaper_location" 
     xsetroot -name "fsignal:xrdb"
     killall dwmblocks
     setsid dwmblocks >/dev/null & } >/dev/null 2>&1

@@ -9,7 +9,6 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 
-
 (package! all-the-icons-dired)
 (package! dired-open)
 (package! peep-dired)

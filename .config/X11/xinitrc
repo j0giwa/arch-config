@@ -8,16 +8,4 @@ else
 fi
 
 # Start an xsession
-
-# Here DWM is kept as default
-session=${1:-dwm}
-
-case $session in
-    dwm             ) exec dwm;;
-    i3|i3wm         ) exec i3;;
-    bspwm           ) exec bspwm;;
-    xfce|xfce4      ) exec startxfce4;;
-    # No known session, try to run it as command
-    *               ) exec $1;;
-esac
-
+exec dwm-wrapper

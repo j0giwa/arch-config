@@ -1,6 +1,6 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-(setq fancy-splash-image (concat doom-user-dir "splash/doom-emacs-dracula-green.png"))
+(setq fancy-splash-image (concat doom-user-dir "images/emacs_style/doomEmacsGruvbox.svg"))
 
 (beacon-mode t)
 
@@ -9,9 +9,9 @@
 
 (setq auto-save-default t make-backup-files t)
 
-(setq doom-font (font-spec :family "SFMono Nerd Font" :size 12)
-      doom-variable-pitch-font (font-spec :family "SFMono Nerd Font" :size 12)
-      doom-big-font (font-spec :family "SFMono Nerd Font" :size 24))
+(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 12 :height 1.0)
+      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :height 1.3)
+      doom-big-font (font-spec :family "Iosevka Nerd Font" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -19,7 +19,7 @@
   '(font-lock-comment-face :slant italic)
   '(font-lock-keyword-face :slant italic))
 
-(setq doom-theme 'doom-dracula)
+(setq doom-theme 'doom-gruvbox)
 
 (setq display-line-numbers-type 'relative)
 
@@ -71,8 +71,7 @@
                               ("mkv" . "mpv")
                               ("mp4" . "mpv")))
 
-(use-package rainbow-mode
-:hook (prog-mode . rainbow-mode ))
+(use-package rainbow-mode :hook (prog-mode . rainbow-mode ))
 
 (map! :leader :desc "Org babel tangle" "m B" #'org-babel-tangle)
 (after! org
@@ -85,48 +84,38 @@
         org-src-fontify-natively t
         org-src-tab-acts-natively t))
 
-(after! org
-  (setq org-agenda-files '("~/Documents/org/agenda.org")))
+(use-package! mixed-pitch
+  :hook (org-mode . mixed-pitch-mode)
+  :config
+  (setq mixed-pitch-set-heigth t)
+  (set-face-attribute 'variable-pitch nil :height 1.3))
 
-(setq
+(after! org
+  (setq org-agenda-files '("~/Documents/org/agenda.org"))
+  (setq
    org-fancy-priorities-list '("🟥" "🟧" "🟨")
    org-priority-faces
-   '((?A :foreground "#ff6c6b" :weight bold)
-     (?B :foreground "#50fa7b" :weight bold)
-     (?C :foreground "#bd93f9" :weight bold))
+   '((?A :weight bold)
+     (?B :weight bold)
+     (?C :weight bold))
    org-agenda-block-separator 8411)
 
-(setq org-agenda-custom-commands
-      '(("v" "A better agenda view"
-         ((tags "PRIORITY=\"A\""
-                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                 (org-agenda-overriding-header "High-priority unfinished tasks:")))
-          (tags "PRIORITY=\"B\""
+  (setq org-agenda-custom-commands
+        '(("v" "A better agenda view"
+           ((tags "PRIORITY=\"A\""
+                  ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                   (org-agenda-overriding-header "High-priority unfinished tasks:")))
+            (tags "PRIORITY=\"B\""
                 ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
                  (org-agenda-overriding-header "Medium-priority unfinished tasks:")))
-          (tags "PRIORITY=\"C\""
-                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                 (org-agenda-overriding-header "Low-priority unfinished tasks:")))
-          (tags "customtag"
-                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                 (org-agenda-overriding-header "Tasks marked with customtag:")))
-
-          (agenda "")
-          (alltodo "")))))
-
-(with-eval-after-load 'org-faces
-  (dolist
-      (face
-       '((org-level-1 1.7 "#8be9fd" ultra-bold)
-         (org-level-2 1.6 "#bd93f9" extra-bold)
-         (org-level-3 1.5 "#50fa7b" bold)
-         (org-level-4 1.4 "#ffb86c" semi-bold)
-         (org-level-5 1.3 "#8be9fd" normal)
-         (org-level-6 1.2 "#bd93f9" normal)
-         (org-level-7 1.1 "#50fa7b" normal)
-         (org-level-8 1.0 "#ff6c6b" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
+            (tags "PRIORITY=\"C\""
+                  ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                   (org-agenda-overriding-header "Low-priority unfinished tasks:")))
+            (tags "customtag"
+                  ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                   (org-agenda-overriding-header "Tasks marked with customtag:")))
+            (agenda "")
+            (alltodo ""))))))
 
 (use-package org-auto-tangle
   :defer t

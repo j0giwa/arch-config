@@ -7,7 +7,6 @@
 
 * Table of Contents :toc:
 - [[#about-this-config][About this config]]
-  - [[#requirements][Requirements]]
 - [[#splash-screen][Splash screen]]
 - [[#beacon][Beacon]]
 - [[#identification][Identification]]
@@ -18,8 +17,8 @@
 - [[#dired][Dired]]
 - [[#rainbow-mode][Rainbow Mode]]
 - [[#org-mode][Org-Mode]]
-  - [[#org-agenda][Org Agenda]]
   - [[#org-fonts][Org Fonts]]
+  - [[#org-agenda][Org Agenda]]
   - [[#org-auto-tangle][Org auto-tangle]]
 - [[#package-configuration][Package configuration]]
 
@@ -27,21 +26,14 @@
 This is my private configuration.
 It is supposed to be used in DOOM Emacs
 Remember, you do not need to run 'doom sync' after modifying this file!
+
 #+begin_src emacs-lisp
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 #+end_src
 
-** Requirements
-Just put these in your /'packages.el'/
-#+begin_example emacs-lisp
-(package! writeroom-mode) ;; Distraction free writing
-(package! org-auto-tangle) ;; Autotangle on save
-(package! beacon) ;; Neve loose cursor
-#+end_example
-
 * Splash screen
 #+begin_src emacs-lisp
-(setq fancy-splash-image (concat doom-user-dir "splash/doom-emacs-dracula-green.png"))
+(setq fancy-splash-image (concat doom-user-dir "images/emacs_style/doomEmacsGruvbox.svg"))
 #+end_src
 
 * Beacon
@@ -51,6 +43,7 @@ Just put these in your /'packages.el'/
 
 * Identification
 Some functionality uses this to identify you, e.g. GPG configuration, email clients, file templates and snippets.
+
 #+begin_src emacs-lisp
 (setq user-full-name "Jonas Schwind"
       user-mail-address "jonasschwind20021@gmx.de")
@@ -72,9 +65,9 @@ Doom exposes five (optional) variables for controlling fonts in Doom:
 See 'C-h v doom-font' for documentation and more examples of what they accept.
 
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "SFMono Nerd Font" :size 12)
-      doom-variable-pitch-font (font-spec :family "SFMono Nerd Font" :size 12)
-      doom-big-font (font-spec :family "SFMono Nerd Font" :size 24))
+(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 12 :height 1.0)
+      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :height 1.3)
+      doom-big-font (font-spec :family "Iosevka Nerd Font" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -89,7 +82,7 @@ If Emacs still can't find your font, it likely wasn't installed correctly. Font 
 * Doom Theme
 There are two ways to load a theme. Both assume the theme is installed and available. You can either set `doom-theme' or manually load a theme with the `load-theme' function.
 #+begin_src emacs-lisp
-(setq doom-theme 'doom-dracula)
+(setq doom-theme 'doom-gruvbox)
 #+end_src
 
 * Line Settings
@@ -153,10 +146,11 @@ Automaticaly wrap lengthy lines.
 #+end_src
 
 * Rainbow Mode
-Previev color codes
+Rainbow mode displays the actual color for any hex value color, regardless of what mode I am in.
+The following creates a global minor mode for rainbow-mode and enables it.
+
 #+begin_src emacs-lisp
-(use-package rainbow-mode
-:hook (prog-mode . rainbow-mode ))
+(use-package rainbow-mode :hook (prog-mode . rainbow-mode ))
 #+end_src
 
 * Org-Mode
@@ -174,54 +168,44 @@ If you use `org' and don't want your org files in the default location below, ch
         org-src-tab-acts-natively t))
 #+end_src
 
-** Org Agenda
-#+begin_src emacs-lisp
-(after! org
-  (setq org-agenda-files '("~/Documents/org/agenda.org")))
-
-(setq
-   org-fancy-priorities-list '("🟥" "🟧" "🟨")
-   org-priority-faces
-   '((?A :foreground "#ff6c6b" :weight bold)
-     (?B :foreground "#50fa7b" :weight bold)
-     (?C :foreground "#bd93f9" :weight bold))
-   org-agenda-block-separator 8411)
-
-(setq org-agenda-custom-commands
-      '(("v" "A better agenda view"
-         ((tags "PRIORITY=\"A\""
-                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                 (org-agenda-overriding-header "High-priority unfinished tasks:")))
-          (tags "PRIORITY=\"B\""
-                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                 (org-agenda-overriding-header "Medium-priority unfinished tasks:")))
-          (tags "PRIORITY=\"C\""
-                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                 (org-agenda-overriding-header "Low-priority unfinished tasks:")))
-          (tags "customtag"
-                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                 (org-agenda-overriding-header "Tasks marked with customtag:")))
-
-          (agenda "")
-          (alltodo "")))))
-#+end_src
-
 ** Org Fonts
 Set dracula colored header fonts for org-mode
 #+begin_src emacs-lisp
-(with-eval-after-load 'org-faces
-  (dolist
-      (face
-       '((org-level-1 1.7 "#8be9fd" ultra-bold)
-         (org-level-2 1.6 "#bd93f9" extra-bold)
-         (org-level-3 1.5 "#50fa7b" bold)
-         (org-level-4 1.4 "#ffb86c" semi-bold)
-         (org-level-5 1.3 "#8be9fd" normal)
-         (org-level-6 1.2 "#bd93f9" normal)
-         (org-level-7 1.1 "#50fa7b" normal)
-         (org-level-8 1.0 "#ff6c6b" normal)))
-    (set-face-attribute (nth 0 face) nil :font doom-variable-pitch-font :weight (nth 3 face) :height (nth 1 face) :foreground (nth 2 face)))
-    (set-face-attribute 'org-table nil :font doom-font :weight 'normal :height 1.0 :foreground "#bfafdf"))
+(use-package! mixed-pitch
+  :hook (org-mode . mixed-pitch-mode)
+  :config
+  (setq mixed-pitch-set-heigth t)
+  (set-face-attribute 'variable-pitch nil :height 1.3))
+#+end_src
+
+** Org Agenda
+#+begin_src emacs-lisp
+(after! org
+  (setq org-agenda-files '("~/Documents/org/agenda.org"))
+  (setq
+   org-fancy-priorities-list '("🟥" "🟧" "🟨")
+   org-priority-faces
+   '((?A :weight bold)
+     (?B :weight bold)
+     (?C :weight bold))
+   org-agenda-block-separator 8411)
+
+  (setq org-agenda-custom-commands
+        '(("v" "A better agenda view"
+           ((tags "PRIORITY=\"A\""
+                  ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                   (org-agenda-overriding-header "High-priority unfinished tasks:")))
+            (tags "PRIORITY=\"B\""
+                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                 (org-agenda-overriding-header "Medium-priority unfinished tasks:")))
+            (tags "PRIORITY=\"C\""
+                  ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                   (org-agenda-overriding-header "Low-priority unfinished tasks:")))
+            (tags "customtag"
+                  ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                   (org-agenda-overriding-header "Tasks marked with customtag:")))
+            (agenda "")
+            (alltodo ""))))))
 #+end_src
 
 ** Org auto-tangle
