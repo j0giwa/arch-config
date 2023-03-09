@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# This script shows the Networktype (Wifi or Ethernet in)
+
+# Asuume Disconnected by default
+networktype="N/A"
+ipadd="--"
+
+get_ip () {
+    ipadd="$(ip -p -f inet address | grep inet | awk 'NR == 2 {print $2}')" 
+}
+
+# Get the networtype by checking whid device is used
+get_networktype () {
+    case $(nmcli d | awk 'NR == 2 {print $1}') in
+        wlan0) networktype="W";;
+        enp4s0f1) networktype="E";;
+    esac
+}
+
+get_networktype
+[ networktype = "N/A" ] || get_ip
+
+printf "%s: %s \n" "$networktype" "$ipadd"

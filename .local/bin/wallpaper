@@ -1,24 +1,28 @@
 #!/bin/sh
 
-wallpaper_location="$HOME/.config/wallpaper/wal.png"
+wallpaper_location="$HOME/.cache/wallpaper/"
+wallpaper_image="$wallpaper_location/wal.png"
+
+# make sure the folder exists
+[ -d "$wallpaper_location" ] || mkdir $wallpaper_location
 
 # Select a picture and set it as the wallpaper
-[ -f "$1" ] && cp "$1" "$wallpaper_location" && notify-send -i "$HOME/.config/wallpaper/wal.png" "Wallpaper changed!"
+[ -f "$1" ] && cp "$1" "$wallpaper_image" && notify-send -i "$wallpaper_image" "Wallpaper changed!"
 # If "$1" is a directory, select a random picture
-[ -d "$1" ] && cp "$(find "$1" -type f | shuf -n 1)" "$wallpaper_location" && notify-send -i "$HOME/.config/wallpaper/wal.png" "Random Wallpaper chosen!"
+[ -d "$1" ] && cp "$(find "$1" -type f | shuf -n 1)" "$wallpaper_image" && notify-send -i "$wallpaper_image" "Random Wallpaper chosen!"
 
 # If pywall ist installed (and enabled) update colors
 type wal >/dev/null 2>&1 && { wal -c
-    wal -s -i "$wallpaper_location" 
+    wal -s -i "$wallpaper_image" 
     xsetroot -name "fsignal:xrdb"
     killall dwmblocks
     setsid dwmblocks >/dev/null & } >/dev/null 2>&1
 
 # Use Xwallaper if in an Xorg sesiion
 [ $(loginctl show-session "$XDG_SESSION_ID" -p Type) = "Type=tty" ] &&
-    xwallpaper --zoom $HOME/.config/wallpaper/wal.png &&
+    xwallpaper --zoom "$wallpaper_image" &&
     xdotool key alt+F5 # refresh dwm colors (for pywall)
 
 # Use sww if in an Xorg sesiion
 [ $(loginctl show-session "$XDG_SESSION_ID" -p Type) = "Type=wayland" ] &&
-    swww img $HOME/.config/wallpaper/wal.png --transition-fps 60 --transition-type grow --transition-duration 2
+    swww img $wallpaper_image --transition-fps 60 --transition-type grow --transition-duration 2

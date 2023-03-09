@@ -9,7 +9,7 @@ export PAGER="most"
 
 path+=$HOME/.emacs.d/bin
 path+=$HOME/.local/bin
-path+=$HOME/.local/bin/bar
+path+=$HOME/.local/bin/statusbar
 path+=$HOME/.spicetify
 export PATH
 

@@ -1,5 +1,4 @@
-" XDG SUPPORT
-
+" XDG SUPPORT:
 set runtimepath^=$XDG_CONFIG_HOME/vim
 set runtimepath+=$XDG_DATA_HOME/vim
 set runtimepath+=$XDG_CONFIG_HOME/vim/after
@@ -15,14 +14,14 @@ set ttymouse=sgr
 set mouse=a
 
 " PLUGINS:
-
 call plug#begin('$HOME/.config/vim/plugged')
+  "Themes
+  Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'morhetz/gruvbox'
   "Kinda Useless
   Plug 'preservim/nerdtree'
   Plug 'ryanoasis/vim-devicons'
-
   " Useless eyecandy
-  Plug 'dracula/vim', { 'as': 'dracula' }
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   let g:airline#extensions#tabline#enabled = 1
@@ -30,55 +29,36 @@ call plug#begin('$HOME/.config/vim/plugged')
 call plug#end()
 
 " BASICS:
-
 set nocompatible
 syntax enable
 filetype plugin indent on
 colorscheme dracula
+set bg=dark
 set encoding=utf-8
 set noerrorbells visualbell t_vb=
 set viminfo+=n~i$HOME/.config/vim/viminfo
 
-
 " INDENTATION:
-
 set backspace=indent,eol,start
 set autoindent smartindent
 set ts=4 sw=4 sts=4 expandtab smarttab
 
-
 " SWAPBACKUP:
-
 set noswapfile
 set nobackup
-set undodir=~/.vim/undodir
 set undofile
 
-
 " DISPLAY UTILS:
-
 set number relativenumber
-set textwidth=80 colorcolumn=-1 cursorline
+"set textwidth=80 colorcolumn=-1 cursorline
 set laststatus=2 cmdheight=1
-set spelllang=en_us,de_de spell
-"exec "set listchars=tab:\uBB\uBB,nbsp:~,trail:\uB7"
-"set list
-
-highlight clear SpellBad
-highlight SpellBad cterm=underline ctermfg=darkred
-highlight SpecialKey ctermfg=darkred
-
 
 " FINDING FILES:
-
 set path+=**    " Search down into Subfolders
 set wildmenu    " Provides tab-completion for all file-related tasks"
 set hls is
 
-
 " FILE BROWSING:
-
-" netrw tweaks
 let g:netrw_banner=0            " disable annoying banner
 let g:netrw_brwoser_split=0     " open in prior window
 let g:netrw_altv=1              " open splits to the right
@@ -86,9 +66,7 @@ let g:netrw_liststyle=3         " tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide=',\(^\|\s\s\)\zs\.\S\+'
 
-
 " TAG JUMPING:
-
 command! MakeTags !ctags -R .   " Create the 'tags' file (may need to install ctags first))''
 " - ^]      jump to tag under cursor
 " - ^t      go back

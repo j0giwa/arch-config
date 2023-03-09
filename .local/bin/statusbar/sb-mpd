@@ -1,0 +1,8 @@
+#!/bin/sh
+
+filter() { sed "/^volume:/d;s/\\&/&amp;/g;s/\\[paused\\].*/⏸/g;/\\[playing\\].*/d;/^ERROR/Q" | paste -sd ' ' -;}
+
+song="$(mpc status | filter)"
+
+[ "$song" = "" ] ||
+    printf "Song: %s\n" "$song"

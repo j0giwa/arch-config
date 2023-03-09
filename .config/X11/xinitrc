@@ -8,4 +8,5 @@ else
 fi
 
 # Start an xsession
-exec dwm-wrapper
+#exec dwm-wrapper
+exec startxfce4
